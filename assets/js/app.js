@@ -1,10 +1,12 @@
-var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-url += '?' + $.param({
-    'api-key': "44e19de4662d445db0a2832a07549a29",
-    'begin_date': "20080217",
-    'end_date': "20100502",
-    'q': 'fishing'
-});
+var begindate = $('').val();
+var enddate = $('').val();
+var query = $('').val();
+
+var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=44e19de4662d445db0a2832a07549a29";
+if (begindate !== '') url += "&begin_date=" + begindate;
+if (enddate !== '') url += "&end_date=" + enddate;
+if (query !== '') url += "&q=" + query;
+
 $.ajax({
     url: url,
     method: 'GET',
